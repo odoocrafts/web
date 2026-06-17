@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -128,6 +128,25 @@ function Scene() {
 }
 
 export default function GlobalBackground() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  if (!mounted) return <div className="fixed inset-0 w-full h-full bg-black -z-50 pointer-events-none" />;
+
+  if (isMobile) {
+    return (
+      <div className="fixed inset-0 w-full h-full -z-50 pointer-events-none bg-gradient-to-br from-[#000411] via-[#050015] to-[#000000]" />
+    );
+  }
+
   return (
     <div className="fixed inset-0 w-full h-full bg-black -z-50 pointer-events-none">
       <Canvas

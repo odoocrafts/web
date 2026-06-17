@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, OrbitControls, Points, PointMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -58,14 +58,38 @@ function Particles() {
 }
 
 export default function GlobalPresence() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <section className="relative h-screen bg-black overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-          <Globe />
-          <Particles />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
+        {mounted && !isMobile && (
+          <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+            <Globe />
+            <Particles />
+            <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
+          </Canvas>
+        )}
+        {mounted && isMobile && (
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30">
+            {/* CSS Globe Fallback */}
+            <div className="w-[300px] h-[300px] rounded-full border border-blue-500/30 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/40 via-transparent to-transparent flex items-center justify-center relative">
+              <div className="w-[300px] h-[1px] bg-blue-500/20 absolute" />
+              <div className="w-[1px] h-[300px] bg-blue-500/20 absolute" />
+              <div className="w-[200px] h-[300px] border border-blue-500/20 rounded-full absolute" />
+              <div className="w-[300px] h-[200px] border border-blue-500/20 rounded-full absolute" />
+            </div>
+          </div>
+        )}
       </div>
       
       <div className="relative z-10 container mx-auto px-6 pointer-events-none">
