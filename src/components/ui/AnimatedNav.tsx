@@ -30,7 +30,6 @@ export default function AnimatedNav() {
             <Link
               key={item.name}
               href={item.href}
-              {...(item.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${
