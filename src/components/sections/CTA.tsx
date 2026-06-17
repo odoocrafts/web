@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare, Mail, Phone, Home } from "lucide-react";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -38,11 +39,11 @@ export default function CTA() {
           {/* Useful Links */}
           <div className="flex flex-col gap-4">
             <h3 className="text-lg font-semibold text-white mb-2">Useful Links</h3>
-            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">Home</a>
-            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">About us</a>
-            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">Services</a>
-            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="text-purple-400 hover:text-purple-300 transition-colors">Contact us</a>
+            <Link href="/" className="text-purple-400 hover:text-purple-300 transition-colors">Home</Link>
+            <Link href="/about" className="text-purple-400 hover:text-purple-300 transition-colors">About us</Link>
+            <Link href="/our-services" className="text-purple-400 hover:text-purple-300 transition-colors">Services</Link>
+            <Link href="/privacy-policy" className="text-purple-400 hover:text-purple-300 transition-colors">Privacy Policy</Link>
+            <Link href="/contact" className="text-purple-400 hover:text-purple-300 transition-colors">Contact us</Link>
           </div>
 
           {/* About us */}
