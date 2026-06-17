@@ -1,6 +1,12 @@
 import CTA from "@/components/sections/CTA";
 import { ArrowRight, MessageSquare, Mail, Code2, Rocket, Clock } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Hire a Developer",
+  description: "Hire dedicated Odoo developers and technical experts from Odoocrafts for your next big project.",
+};
 
 export default function HireDeveloper() {
   return (

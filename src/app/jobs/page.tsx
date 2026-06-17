@@ -1,5 +1,11 @@
 import CTA from "@/components/sections/CTA";
 import { Briefcase, MapPin, Clock, ArrowRight, Mail } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Careers & Jobs",
+  description: "Join the Odoocrafts team. Explore our open positions and career opportunities.",
+};
 
 export default function Jobs() {
   return (

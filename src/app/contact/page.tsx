@@ -1,5 +1,11 @@
 import CTA from "@/components/sections/CTA";
 import { MapPin, Phone, MessageCircle, Mail, ArrowUpRight } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description: "Get in touch with Odoocrafts. Connect with our experts via WhatsApp, email, or phone.",
+};
 
 export default function Contact() {
   return (
