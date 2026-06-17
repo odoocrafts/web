@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Odoocrafts",
     images: [
       {
-        url: "/web/logo.png",
+        url: "/web/social-share.png",
         width: 1200,
         height: 630,
         alt: "Odoocrafts - Business Systems",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Odoocrafts | Official Odoo Partner",
     description: "Expert Odoo implementation, customization, and automation services.",
-    images: ["/web/logo.png"],
+    images: ["/web/social-share.png"],
   },
   robots: {
     index: true,
