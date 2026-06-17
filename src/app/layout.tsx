@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Odoocrafts | Official Odoo Partner",
     description: "Expert Odoo implementation, customization, and automation services.",
-    url: "https://odoocrafts.github.io/web",
+    url: "https://odoocrafts.com",
     siteName: "Odoocrafts",
     images: [
       {
-        url: "/web/social-share.png",
+        url: "/social-share.png",
         width: 1200,
         height: 630,
         alt: "Odoocrafts - Business Systems",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Odoocrafts | Official Odoo Partner",
     description: "Expert Odoo implementation, customization, and automation services.",
-    images: ["/web/social-share.png"],
+    images: ["/social-share.png"],
   },
   robots: {
     index: true,
