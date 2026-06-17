@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Image from "next/image";
 import AnimatedNav from "@/components/ui/AnimatedNav";
+import logoImg from "../../public/logo.png";
 
 import GlobalBackground from "@/components/animations/GlobalBackground";
 
@@ -34,7 +35,7 @@ export default function RootLayout({
         {/* Global Navigation */}
         <nav className="fixed top-0 w-full z-50 flex items-center justify-between px-8 pt-10 pb-6 text-white pointer-events-none">
           <div className="flex items-center gap-3 pointer-events-auto">
-            <Image src="/logo.png" alt="Odoocrafts Logo" width={32} height={32} className="w-8 h-8 object-contain" priority />
+            <Image src={logoImg} alt="Odoocrafts Logo" width={32} height={32} className="w-8 h-8 object-contain" priority />
             <span className="font-bold text-xl tracking-tight">Odoocrafts</span>
           </div>
           

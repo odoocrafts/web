@@ -5,11 +5,16 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import anasImg from "../../../../public/team/anas.webp";
+import rizwanImg from "../../../../public/team/rizwan.webp";
+import murshidImg from "../../../../public/team/murshid.webp";
+import fidhaImg from "../../../../public/team/fidha.webp";
+
 const team = [
-  { name: "Anas", role: "CEO", image: "/team/anas.webp" },
-  { name: "Rizwan", role: "CTO", image: "/team/rizwan.webp" },
-  { name: "Murshid", role: "COO", image: "/team/murshid.webp" },
-  { name: "Fidha", role: "CMO", image: "/team/fidha.webp" },
+  { name: "Anas", role: "CEO", image: anasImg },
+  { name: "Rizwan", role: "CTO", image: rizwanImg },
+  { name: "Murshid", role: "COO", image: murshidImg },
+  { name: "Fidha", role: "CMO", image: fidhaImg },
 ];
 
 export default function AboutTeam() {
