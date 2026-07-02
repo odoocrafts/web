@@ -21,7 +21,7 @@ export default function CTA() {
             Ready to Build Systems That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">Scale?</span>
           </h2>
           <a 
-            href="https://wa.me/918330887435?text=Hi%20Odoocrafts!%20I%20would%20like%20to%20schedule%20a%20consultation."
+            href="https://cal.id/odoocrafts/"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden flex items-center gap-2 hover:scale-105 transition-transform duration-300"

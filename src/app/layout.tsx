@@ -8,6 +8,7 @@ import AnimatedNav from "@/components/ui/AnimatedNav";
 import logoImg from "../../public/logo.png";
 
 import GlobalBackground from "@/components/animations/GlobalBackground";
+import { Calendar } from "lucide-react";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -84,6 +85,15 @@ export default function RootLayout({
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
+        <a
+          href="https://cal.id/odoocrafts/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-24 right-6 z-50 bg-white/5 backdrop-blur-xl border border-white/20 text-purple-400 p-4 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.3)] hover:bg-white/10 hover:border-white/30 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+          aria-label="Book Appointment"
+        >
+          <Calendar className="w-7 h-7" />
+        </a>
         <a
           href="https://wa.me/918330887435"
           target="_blank"
