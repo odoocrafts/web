@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, FlaskConical, Leaf, Code, ExternalLink } from "lucide-react";
+import { ArrowRight, Bot, FlaskConical, Leaf, Code, ExternalLink, GraduationCap, Stethoscope } from "lucide-react";
 import Link from "next/link";
 
 const solutions = [
@@ -27,6 +27,22 @@ const solutions = [
     icon: Leaf,
     color: "from-emerald-500 to-green-600",
     lightColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    link: "https://smarthive.odoocrafts.com/register"
+  },
+  {
+    title: "Vidyalink 360",
+    subtitle: "Complete school / college management ERP.",
+    icon: GraduationCap,
+    color: "from-yellow-500 to-orange-500",
+    lightColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20",
+    link: "https://smarthive.odoocrafts.com/register"
+  },
+  {
+    title: "Clinico 360",
+    subtitle: "Comprehensive Clinics operating system.",
+    icon: Stethoscope,
+    color: "from-rose-500 to-red-600",
+    lightColor: "bg-rose-500/10 text-rose-400 border-rose-500/20",
     link: "https://smarthive.odoocrafts.com/register"
   }
 ];
