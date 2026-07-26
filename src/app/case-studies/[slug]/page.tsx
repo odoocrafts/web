@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 // Simple custom markdown renderer for our predefined content
 function renderMarkdown(content: string) {
-  const lines = content.trim().split('\\n');
+  const lines = content.trim().split('\n');
   const elements = [];
   let currentList = [];
   
