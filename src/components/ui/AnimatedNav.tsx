@@ -67,7 +67,7 @@ export default function AnimatedNav() {
               transition={{ duration: 0.2 }}
               className="absolute inset-0 flex items-center justify-center w-full h-full"
             >
-              <img src="/images/logo.png" alt="Menu" className="w-6 h-6 object-contain" />
+              <img src="/logo.png" alt="Odoocrafts Menu" className="w-8 h-8 object-contain" />
             </motion.div>
           )}
         </AnimatePresence>
