@@ -17,19 +17,21 @@ export default function AnimatedLogo() {
   }, []);
 
   return (
-    <AnimatePresence>
-      {!isScrolled && (
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -50 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          className="flex items-center gap-3 pointer-events-auto"
-        >
-          <Image src={logoImg} alt="Odoocrafts Logo" width={32} height={32} className="w-8 h-8 object-contain" priority />
-          <span className="font-bold text-xl tracking-tight">Odoocrafts</span>
-        </motion.div>
-      )}
-    </AnimatePresence>
+    <div className="flex-shrink-0">
+      <AnimatePresence>
+        {!isScrolled && (
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -50 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="flex items-center gap-3 pointer-events-auto"
+          >
+            <Image src={logoImg} alt="Odoocrafts Logo" width={32} height={32} className="w-8 h-8 object-contain" priority />
+            <span className="font-bold text-xl tracking-tight">Odoocrafts</span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }
