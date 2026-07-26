@@ -45,13 +45,14 @@ export default function AnimatedNav() {
     <>
       {/* Desktop Nav */}
       <motion.div 
-        className="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full overflow-hidden relative cursor-pointer"
+        className="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 overflow-hidden relative cursor-pointer"
         initial={false}
         animate={{
           width: isFolded ? 48 : "auto",
           height: 48,
           padding: isFolded ? "0" : "0 8px",
-          backgroundColor: isFolded ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)"
+          backgroundColor: isFolded ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)",
+          borderRadius: isFolded ? "14px" : "9999px"
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         onMouseEnter={() => setIsNavHovered(true)}
@@ -67,7 +68,8 @@ export default function AnimatedNav() {
               transition={{ duration: 0.2 }}
               className="absolute inset-0 flex items-center justify-center w-full h-full"
             >
-              <img src="/logo.png" alt="Odoocrafts Menu" className="w-8 h-8 object-contain" />
+              <div className="absolute w-3 h-3 bg-white rounded-sm" />
+              <img src="/logo.png" alt="Odoocrafts Menu" className="w-8 h-8 object-contain relative z-10" />
             </motion.div>
           )}
         </AnimatePresence>
