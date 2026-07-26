@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import SmartHiveShowcase from "@/components/sections/SmartHiveShowcase";
-import GlobalPresence from "@/components/sections/GlobalPresence";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
@@ -42,7 +41,6 @@ export default function Home() {
 
       {/* Sections */}
       <SmartHiveShowcase />
-      <GlobalPresence />
       <CTA />
     </main>
   );

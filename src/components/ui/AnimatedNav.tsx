@@ -21,59 +21,109 @@ const navItems = [
 export default function AnimatedNav() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const pathname = usePathname();
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavHovered, setIsNavHovered] = useState(false);
 
   // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
 
+  // Handle scroll to fold menu
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const isFolded = isScrolled && !isNavHovered;
+
   return (
     <>
       {/* Desktop Nav */}
-      <div className="hidden md:flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 py-2">
-        <div className="flex items-center gap-1">
+      <motion.div 
+        className="hidden md:flex items-center bg-white/5 backdrop-blur-md border border-white/10 rounded-full overflow-hidden relative cursor-pointer"
+        initial={false}
+        animate={{
+          width: isFolded ? 48 : "auto",
+          height: 48,
+          padding: isFolded ? "0" : "0 8px",
+          backgroundColor: isFolded ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.05)"
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        onMouseEnter={() => setIsNavHovered(true)}
+        onMouseLeave={() => setIsNavHovered(false)}
+      >
+        {/* Folded Logo State */}
+        <AnimatePresence>
+          {isFolded && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 flex items-center justify-center w-full h-full"
+            >
+              <img src="/images/logo.png" alt="Menu" className="w-6 h-6 object-contain" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Unfolded Links State */}
+        <div className="flex items-center gap-1 w-max px-2">
           {navItems.map((item, index) => {
             const isActive = pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href));
             
             return (
-              <Link
+              <motion.div
                 key={item.name}
-                href={item.href}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full ${
-                  isActive ? "text-white" : "text-white/80 hover:text-white"
-                }`}
+                initial={false}
+                animate={{
+                  opacity: isFolded ? 0 : 1,
+                  filter: isFolded ? "blur(4px)" : "blur(0px)",
+                }}
+                transition={{ duration: 0.2 }}
               >
-                {isActive && (
-                  <motion.div
-                    layoutId="active-pill"
-                    className="absolute inset-0 bg-purple-600 rounded-full z-0"
-                    initial={false}
-                    animate={{ opacity: 1 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{item.name}</span>
-                <AnimatePresence>
-                  {hoveredIndex === index && !isActive && (
+                <Link
+                  href={item.href}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-full block whitespace-nowrap ${
+                    isActive ? "text-white" : "text-white/80 hover:text-white"
+                  } ${isFolded ? "pointer-events-none" : ""}`}
+                  tabIndex={isFolded ? -1 : 0}
+                >
+                  {isActive && (
                     <motion.div
-                      layoutId="hover-pill"
-                      initial={{ opacity: 0 }}
+                      layoutId="active-pill"
+                      className="absolute inset-0 bg-purple-600 rounded-full z-0"
+                      initial={false}
                       animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute inset-0 bg-white/10 rounded-full z-0"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                </AnimatePresence>
-              </Link>
+                  <span className="relative z-10">{item.name}</span>
+                  <AnimatePresence>
+                    {hoveredIndex === index && !isActive && (
+                      <motion.div
+                        layoutId="hover-pill"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute inset-0 bg-white/10 rounded-full z-0"
+                      />
+                    )}
+                  </AnimatePresence>
+                </Link>
+              </motion.div>
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
       {/* Mobile Hamburger Button */}
       <div className="md:hidden relative z-[60]">
