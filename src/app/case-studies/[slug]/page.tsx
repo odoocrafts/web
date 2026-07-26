@@ -55,7 +55,7 @@ function renderMarkdown(content: string) {
     else if (line.startsWith('* ') || line.startsWith('- ')) {
       let text = line.substring(2);
       // bold replacement (very basic)
-      const boldParts = text.split(/\\*\\*(.*?)\\*\\*/g);
+      const boldParts = text.split(/\*\*(.*?)\*\*/g);
       const formattedText = boldParts.map((part, idx) => 
         idx % 2 === 1 ? <strong key={idx} className="text-white font-semibold">{part}</strong> : part
       );
@@ -68,7 +68,7 @@ function renderMarkdown(content: string) {
         currentList = [];
       }
       
-      const boldParts = line.split(/\\*\\*(.*?)\\*\\*/g);
+      const boldParts = line.split(/\*\*(.*?)\*\*/g);
       const formattedText = boldParts.map((part, idx) => 
         idx % 2 === 1 ? <strong key={idx} className="text-white font-semibold">{part}</strong> : part
       );
