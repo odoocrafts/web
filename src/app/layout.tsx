@@ -5,7 +5,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Image from "next/image";
 import AnimatedNav from "@/components/ui/AnimatedNav";
-import logoImg from "../../public/logo.png";
+import logoImg from "../../public/logo_dark.png";
 
 import GlobalBackground from "@/components/animations/GlobalBackground";
 import { Calendar } from "lucide-react";
