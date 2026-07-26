@@ -11,6 +11,7 @@ const navItems = [
   { name: "Services", href: "/our-services" },
   { name: "Solutions", href: "/solutions" },
   { name: "Apps", href: "/apps" },
+  { name: "Case Studies", href: "/case-studies" },
   { name: "Hire a Developer", href: "/hire-a-developer" },
   { name: "Jobs", href: "/jobs" },
   { name: "About Us", href: "/about" },
