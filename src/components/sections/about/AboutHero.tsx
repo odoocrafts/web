@@ -44,12 +44,13 @@ export default function AboutHero() {
               <ArrowRight className="w-5 h-5" />
             </a>
             
-            <button 
+            <Link 
+              href="/case-studies"
               className="flex items-center gap-2 px-8 py-4 bg-white/5 text-white font-semibold rounded-full hover:bg-white/10 transition-colors border border-white/10 w-full sm:w-auto justify-center"
             >
               <BookOpen className="w-5 h-5" />
               View Case Studies
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
