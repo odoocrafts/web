@@ -1,45 +1,29 @@
-"use client";
+import Marquee from "@/components/fx/Marquee";
+import { FadeUp } from "@/components/fx/Reveal";
+import { Container, Eyebrow } from "@/components/ui/Section";
 
-import { motion } from "framer-motion";
-import { Hexagon } from "lucide-react";
-
-const techStack = [
-  "Odoo", "AWS", "Docker", "PostgreSQL", "Python", "Flutter", "WhatsApp API"
-];
+const techStack = ["Odoo", "AWS", "Docker", "PostgreSQL", "Python", "Flutter", "WhatsApp API"];
 
 export default function AboutTechStack() {
   return (
-    <section className="py-32 px-6 border-t border-white/5 bg-black/50">
-      <div className="container mx-auto max-w-7xl">
-
-        {/* Tech Stack */}
-        <div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Our Tech Stack</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">We leverage modern, scalable, and battle-tested technologies.</p>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-            {techStack.map((tech, i) => (
-              <motion.div
-                key={tech}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 hover:border-white/30 hover:-translate-y-1 transition-all"
-              >
-                {tech}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
+    <section className="border-y border-[var(--line)] py-16 md:py-20">
+      <Container>
+        <FadeUp className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <Eyebrow index="05">Our tech stack</Eyebrow>
+          <p className="max-w-md text-[15px] text-cream/60">We leverage modern, scalable, and battle-tested technologies.</p>
+        </FadeUp>
+      </Container>
+      <div className="mt-10">
+        <Marquee>
+          {techStack.map((t) => (
+            <span
+              key={t}
+              className="mr-6 inline-flex h-16 items-center rounded-full border border-[var(--line-strong)] px-8 text-2xl font-medium tracking-tight text-cream/80 md:h-20 md:px-10 md:text-4xl"
+            >
+              {t}
+            </span>
+          ))}
+        </Marquee>
       </div>
     </section>
   );

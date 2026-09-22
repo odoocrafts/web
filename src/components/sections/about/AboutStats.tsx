@@ -1,38 +1,35 @@
-"use client";
-
-import { motion } from "framer-motion";
+import CountUp from "@/components/fx/CountUp";
+import { FadeUp, Rule } from "@/components/fx/Reveal";
+import { Container } from "@/components/ui/Section";
 
 const stats = [
-  { value: "50+", label: "Projects Delivered" },
-  { value: "10+", label: "Countries Served" },
-  { value: "99.9%", label: "Uptime Hosting" },
-  { value: "2018", label: "Odoo Experts Since" },
+  { value: 50, suffix: "+", label: "Projects Delivered" },
+  { value: 10, suffix: "+", label: "Countries Served" },
+  { value: 99.9, suffix: "%", decimals: 1, label: "Uptime Hosting" },
+  { value: 2018, label: "Odoo Experts Since", raw: true },
 ];
 
 export default function AboutStats() {
   return (
-    <section className="py-24 px-6 border-y border-white/5 bg-gradient-to-b from-blue-900/10 to-transparent">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-x divide-white/5">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, type: "spring", stiffness: 100 }}
-              className="flex flex-col items-center justify-center px-4"
+    <section className="py-8 md:py-12">
+      <Container>
+        <Rule />
+        <dl className="grid grid-cols-2 gap-y-10 py-12 md:grid-cols-4 md:py-16">
+          {stats.map((s, i) => (
+            <FadeUp
+              key={s.label}
+              delay={i * 0.08}
+              className="flex flex-col gap-2 md:border-l md:border-[var(--line)] md:pl-8 md:first:border-0 md:first:pl-0"
             >
-              <div className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-2">
-                {stat.value}
-              </div>
-              <div className="text-sm md:text-base text-white/60 font-medium uppercase tracking-widest">
-                {stat.label}
-              </div>
-            </motion.div>
+              <dd className="text-[clamp(2.5rem,6vw,5.5rem)] font-medium leading-none tracking-[-0.04em] text-cream">
+                {s.raw ? s.value : <CountUp to={s.value} decimals={s.decimals ?? 0} suffix={s.suffix ?? ""} />}
+              </dd>
+              <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-cream/45">{s.label}</dt>
+            </FadeUp>
           ))}
-        </div>
-      </div>
+        </dl>
+        <Rule />
+      </Container>
     </section>
   );
 }

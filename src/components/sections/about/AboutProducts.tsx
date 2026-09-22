@@ -1,115 +1,91 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowRight, Bot, GraduationCap, Cloud, TrendingUp, Zap, FileSpreadsheet } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Bot, GraduationCap, Cloud, TrendingUp, Zap, FileSpreadsheet } from "lucide-react";
+import { Container, Eyebrow, Heading } from "@/components/ui/Section";
+import { FadeUp, Item, Stagger } from "@/components/fx/Reveal";
+import CountUp from "@/components/fx/CountUp";
 
 const products = [
-  {
-    title: "SmartHive",
-    desc: "AI-powered CRM for Institutes",
-    icon: Bot,
-    color: "from-blue-500 to-indigo-600"
-  },
-  {
-    title: "Vidyalink",
-    desc: "Complete School ERP",
-    icon: GraduationCap,
-    color: "from-purple-500 to-pink-600"
-  },
-  {
-    title: "Managed Odoo Cloud",
-    desc: "Hosted & Maintained by Odoocrafts",
-    icon: Cloud,
-    color: "from-emerald-500 to-teal-600"
-  }
+  { title: "SmartHive", desc: "AI-powered CRM for Institutes", icon: Bot, href: "/solutions" },
+  { title: "Vidyalink", desc: "Complete School ERP", icon: GraduationCap, href: "/solutions" },
+  { title: "Managed Odoo Cloud", desc: "Hosted & Maintained by Odoocrafts", icon: Cloud, href: "/our-services" },
 ];
 
-const caseStudies = [
-  { metric: "40%", label: "Increased admissions", icon: TrendingUp },
-  { metric: "100%", label: "Automated sales pipeline", icon: Zap },
-  { metric: "80%", label: "Reduced manual work", icon: FileSpreadsheet },
+const impact = [
+  { value: 40, label: "Increased admissions", icon: TrendingUp },
+  { value: 100, label: "Automated sales pipeline", icon: Zap },
+  { value: 80, label: "Reduced manual work", icon: FileSpreadsheet },
 ];
 
 export default function AboutProducts() {
   return (
-    <section className="py-32 px-6">
-      <div className="container mx-auto max-w-7xl">
-        
+    <section className="py-24 md:py-32">
+      <Container>
         {/* Products */}
-        <div className="mb-32">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 md:text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Our Proprietary Products</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">Purpose-built platforms designed to solve complex industry challenges out of the box.</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {products.map((prod, i) => {
-              const Icon = prod.icon;
-              return (
-                <motion.div
-                  key={prod.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/30 transition-all overflow-hidden"
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${prod.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`} />
-                  <Icon className="w-10 h-10 text-white mb-6" />
-                  <h3 className="text-2xl font-bold text-white mb-2">{prod.title}</h3>
-                  <p className="text-white/60 mb-8">{prod.desc}</p>
-                  <div className="flex items-center gap-2 text-sm font-medium text-white/80 group-hover:text-white transition-colors cursor-pointer mt-auto">
-                    Explore Product <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </motion.div>
-              );
-            })}
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <FadeUp>
+              <Eyebrow index="03">Proprietary products</Eyebrow>
+            </FadeUp>
+            <Heading className="mt-6" title="Built once," accent="solved everywhere." size="lg" />
           </div>
+          <FadeUp delay={0.2} className="max-w-md">
+            <p className="text-lg leading-relaxed text-cream/65">
+              Purpose-built platforms designed to solve complex industry challenges out of the box.
+            </p>
+          </FadeUp>
         </div>
 
-        {/* Case Studies */}
-        <div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 md:text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Proven Impact</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">We measure our success by the tangible growth of our clients.</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {caseStudies.map((study, i) => {
-              const Icon = study.icon;
-              return (
-                <motion.div
-                  key={study.label}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-6 p-8 rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 backdrop-blur-sm"
+        <Stagger className="mt-12 grid gap-4 md:grid-cols-3">
+          {products.map((p) => {
+            const Icon = p.icon;
+            return (
+              <Item key={p.title}>
+                <Link
+                  href={p.href}
+                  className="card group flex h-full flex-col justify-between rounded-[24px] p-7 transition-colors duration-500 hover:border-[var(--line-strong)]"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
-                    <Icon className="w-8 h-8 text-blue-400" />
+                  <div className="flex items-start justify-between">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--line-strong)] text-lilac">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <ArrowUpRight className="h-5 w-5 text-cream/30 transition-all duration-500 ease-out-expo group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-cream" />
                   </div>
-                  <div>
-                    <div className="text-4xl font-bold text-white mb-1 tracking-tighter">{study.metric}</div>
-                    <div className="text-white/60 text-sm leading-tight">{study.label}</div>
+                  <div className="mt-12">
+                    <h3 className="text-2xl font-medium tracking-tight text-cream">{p.title}</h3>
+                    <p className="mt-2 text-[15px] text-cream/60">{p.desc}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cream/70 group-hover:text-cream">
+                      Explore Product <span className="h-px w-8 bg-current transition-all duration-500 group-hover:w-12" />
+                    </span>
                   </div>
-                </motion.div>
+                </Link>
+              </Item>
+            );
+          })}
+        </Stagger>
+
+        {/* Impact */}
+        <div className="mt-28 md:mt-36">
+          <FadeUp>
+            <Eyebrow index="04">Proven impact</Eyebrow>
+          </FadeUp>
+          <Heading className="mt-6" title="We measure success by" accent="client growth." size="lg" />
+
+          <Stagger className="mt-12 grid gap-px overflow-hidden rounded-[24px] border border-[var(--line)] bg-[var(--line)] md:grid-cols-3">
+            {impact.map((s) => {
+              const Icon = s.icon;
+              return (
+                <Item key={s.label} className="bg-ink p-8 md:p-10">
+                  <Icon className="h-6 w-6 text-lilac" />
+                  <div className="mt-8 text-[clamp(3rem,6vw,5rem)] font-medium leading-none tracking-[-0.04em] text-cream">
+                    <CountUp to={s.value} suffix="%" />
+                  </div>
+                  <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.18em] text-cream/50">{s.label}</p>
+                </Item>
               );
             })}
-          </div>
+          </Stagger>
         </div>
-
-      </div>
+      </Container>
     </section>
   );
 }

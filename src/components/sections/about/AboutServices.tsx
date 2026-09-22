@@ -1,7 +1,6 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Layers, Bot, Code2, Combine, Cloud, Zap, GraduationCap, Factory, Truck, HardHat, HeartPulse, Wrench } from "lucide-react";
+import { Container, Eyebrow, Heading } from "@/components/ui/Section";
+import { FadeUp, Item, Stagger } from "@/components/fx/Reveal";
 
 const services = [
   { icon: Layers, title: "Odoo ERP Implementation" },
@@ -23,74 +22,57 @@ const industries = [
 
 export default function AboutServices() {
   return (
-    <section className="py-32 px-6 relative border-t border-white/5 bg-black/50">
-      <div className="container mx-auto max-w-7xl">
-        
-        {/* What We Do */}
-        <div className="mb-32">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 md:text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">What We Do</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">Comprehensive technological solutions engineered to streamline your operations end-to-end.</p>
-          </motion.div>
+    <section className="py-24 md:py-32">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
+              <FadeUp>
+                <Eyebrow index="01">What we do</Eyebrow>
+              </FadeUp>
+              <Heading className="mt-6" title="End-to-end," accent="engineered." size="lg" />
+              <FadeUp delay={0.2}>
+                <p className="mt-6 max-w-sm text-lg leading-relaxed text-cream/65">
+                  Comprehensive technological solutions engineered to streamline your operations end-to-end.
+                </p>
+              </FadeUp>
+            </div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, i) => {
-              const Icon = service.icon;
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all backdrop-blur-md"
-                >
-                  <Icon className="w-8 h-8 text-blue-400 mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-semibold text-white tracking-tight">{service.title}</h3>
-                </motion.div>
-              );
-            })}
+          <div className="lg:col-span-8">
+            <Stagger className="grid gap-px overflow-hidden rounded-[24px] border border-[var(--line)] bg-[var(--line)] sm:grid-cols-2 lg:grid-cols-3">
+              {services.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <Item key={s.title} className="group bg-ink p-7 transition-colors duration-500 hover:bg-surface">
+                    <Icon className="h-6 w-6 text-lilac transition-transform duration-500 ease-out-expo group-hover:-translate-y-1" />
+                    <h3 className="mt-8 text-lg font-medium leading-snug tracking-tight text-cream">{s.title}</h3>
+                  </Item>
+                );
+              })}
+            </Stagger>
+
+            <div className="mt-20">
+              <FadeUp>
+                <Eyebrow index="02">Industries we serve</Eyebrow>
+              </FadeUp>
+              <Stagger className="mt-6 flex flex-wrap gap-2.5" stagger={0.05}>
+                {industries.map((ind) => {
+                  const Icon = ind.icon;
+                  return (
+                    <Item key={ind.title}>
+                      <span className="inline-flex items-center gap-2.5 rounded-full border border-[var(--line-strong)] px-5 py-3 text-[15px] font-medium text-cream/85 transition-colors duration-500 hover:border-cream hover:bg-cream hover:text-ink">
+                        <Icon className="h-4 w-4" />
+                        {ind.title}
+                      </span>
+                    </Item>
+                  );
+                })}
+              </Stagger>
+            </div>
           </div>
         </div>
-
-        {/* Industries We Serve */}
-        <div>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-16 md:text-center"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Industries We Serve</h2>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">Tailored expertise across specialized sectors.</p>
-          </motion.div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            {industries.map((ind, i) => {
-              const Icon = ind.icon;
-              return (
-                <motion.div
-                  key={ind.title}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="flex items-center gap-3 px-6 py-4 rounded-full bg-gradient-to-r from-white/5 to-white/10 border border-white/10 hover:border-white/30 transition-colors backdrop-blur-sm"
-                >
-                  <Icon className="w-5 h-5 text-purple-400" />
-                  <span className="text-white font-medium">{ind.title}</span>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-
-      </div>
+      </Container>
     </section>
   );
 }

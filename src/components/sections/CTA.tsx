@@ -1,95 +1,37 @@
-"use client";
+import { Container, Heading } from "@/components/ui/Section";
+import { FadeUp } from "@/components/fx/Reveal";
+import Button from "@/components/ui/Button";
+import { links } from "@/lib/site";
 
-import { motion } from "framer-motion";
-import { ArrowRight, MessageSquare, Mail, Phone, Home } from "lucide-react";
-import Link from "next/link";
-
+/** Pre-footer call to action — shared by every page. */
 export default function CTA() {
   return (
-    <section className="relative pt-32 bg-black overflow-hidden flex flex-col items-center justify-center border-t border-white/5">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-blue-900/10 pointer-events-none" />
-      
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mx-auto flex flex-col items-center"
-        >
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
-            Ready to Build Systems That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-white">Scale?</span>
-          </h2>
-          <a 
-            href="https://cal.id/odoocrafts/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-8 py-4 bg-white text-black font-semibold rounded-full overflow-hidden flex items-center gap-2 hover:scale-105 transition-transform duration-300"
-          >
-            <span className="relative z-10">Schedule Consultation</span>
-            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-200 to-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </a>
-        </motion.div>
-      </div>
-
-      <footer className="relative z-10 w-full mt-32 border-t border-white/5 pt-16 pb-8 px-6 md:px-12 text-sm bg-black">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 mb-16 text-left">
-          
-          {/* Useful Links */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">Useful Links</h3>
-            <Link href="/" className="text-purple-400 hover:text-purple-300 transition-colors">Home</Link>
-            <Link href="/about" className="text-purple-400 hover:text-purple-300 transition-colors">About us</Link>
-            <Link href="/our-services" className="text-purple-400 hover:text-purple-300 transition-colors">Services</Link>
-            <Link href="/privacy-policy" className="text-purple-400 hover:text-purple-300 transition-colors">Privacy Policy</Link>
-            <Link href="/contact" className="text-purple-400 hover:text-purple-300 transition-colors">Contact us</Link>
-          </div>
-
-          {/* About us */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">About us</h3>
-            <p className="text-white/70 leading-relaxed text-sm">
-              Odoocrafts is dedicated to delivering customized, efficient, and scalable Odoo solutions that empower businesses to optimize their operations and accelerate growth. Driven by a passion for Odoo, our team brings over 10 years of global experience in ERP implementation. We focus on quality and customer satisfaction, ensuring seamless integration and ongoing support tailored to your needs.
-            </p>
-          </div>
-
-          {/* Connect with us */}
-          <div className="flex flex-col gap-4">
-            <h3 className="text-lg font-semibold text-white mb-2">Connect with us</h3>
-            <div className="flex items-center gap-3 text-purple-400 hover:text-purple-300 transition-colors">
-              <MessageSquare className="w-4 h-4" />
-              <a href="#">Contact us</a>
-            </div>
-            <div className="flex items-center gap-3 text-purple-400 hover:text-purple-300 transition-colors">
-              <Mail className="w-4 h-4" />
-              <a href="mailto:info@odoocrafts.com">info@odoocrafts.com</a>
-            </div>
-            <div className="flex items-center gap-3 text-purple-400 hover:text-purple-300 transition-colors">
-              <Phone className="w-4 h-4" />
-              <a href="tel:+919778013362">+91 97780 13362</a>
-            </div>
-            
-            {/* Social Icons */}
-            <div className="flex gap-3 mt-4">
-              <a href="https://www.instagram.com/odoocrafts/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black hover:bg-white/80 transition-colors">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-              </a>
-              <a href="https://github.com/odoocrafts" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black hover:bg-white/80 transition-colors">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4"/><path d="M9 18c-4.5 1.5-5-2.5-7-3"/></svg>
-              </a>
-              <a href="https://www.linkedin.com/company/odoocrafts/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black hover:bg-white/80 transition-colors">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-              </a>
-            </div>
-          </div>
-          
-        </div>
-
-        <div className="container mx-auto text-left text-white/50">
-          Copyright © Odoocrafts Innovations
-        </div>
-      </footer>
+    <section className="relative overflow-hidden py-24 md:py-40">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[1000px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/25 blur-[160px]" />
+      <div className="pointer-events-none absolute inset-0 grid-lines opacity-50" />
+      <Container className="relative text-center">
+        <Heading
+          as="h2"
+          size="xl"
+          className="mx-auto max-w-[14ch]"
+          title="Ready to build systems that"
+          accent="scale?"
+        />
+        <FadeUp delay={0.2}>
+          <p className="mx-auto mt-8 max-w-xl text-lg text-cream/65 md:text-xl">
+            A 30-minute call with an Odoo architect. No sales deck — we look at how your business runs and tell you
+            what we&apos;d build.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.3} className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button href={links.booking} size="lg" icon="external">
+            Schedule Consultation
+          </Button>
+          <Button href={links.whatsapp} size="lg" variant="ghost" icon="external">
+            WhatsApp us
+          </Button>
+        </FadeUp>
+      </Container>
     </section>
   );
 }

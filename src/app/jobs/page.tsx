@@ -1,6 +1,10 @@
-import CTA from "@/components/sections/CTA";
-import { Briefcase, MapPin, Clock, ArrowRight, Mail } from "lucide-react";
 import { Metadata } from "next";
+import { Briefcase, MapPin, Clock, ArrowUpRight, Mail } from "lucide-react";
+import CTA from "@/components/sections/CTA";
+import { Container, Eyebrow, PageHeader } from "@/components/ui/Section";
+import { FadeUp } from "@/components/fx/Reveal";
+import Button from "@/components/ui/Button";
+import { links } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Careers & Jobs",
@@ -9,74 +13,70 @@ export const metadata: Metadata = {
 
 export default function Jobs() {
   return (
-    <main className="flex min-h-screen flex-col bg-transparent">
-      <section className="relative pt-48 pb-20 px-6 min-h-screen">
-        {/* Background Glows */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/10 blur-[150px] rounded-full pointer-events-none" />
-        
-        <div className="container mx-auto relative z-10 max-w-5xl">
-          <div className="mb-24">
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tighter mb-6">
-              Join <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">Odoocrafts</span>
-            </h1>
-            <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl">
-              Help us build intelligent, scalable systems for businesses worldwide. We're always looking for exceptional talent to join our remote-friendly team.
-            </p>
-          </div>
+    <main>
+      <PageHeader
+        index="07"
+        eyebrow="Careers"
+        title="Join"
+        accent="Odoocrafts."
+        description="Help us build intelligent, scalable systems for businesses worldwide. We're always looking for exceptional talent to join our remote-friendly team."
+      />
 
-          <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-white mb-8 border-b border-white/10 pb-4">Open Positions</h2>
-            
-            {/* Job Card */}
-            <div className="group relative rounded-3xl bg-white/5 border border-white/10 p-8 md:p-10 hover:border-white/20 transition-all backdrop-blur-sm overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/0 to-orange-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-4">Odoo Developer</h3>
-                  <div className="flex flex-wrap items-center gap-4 text-sm text-white/60 mb-6">
-                    <div className="flex items-center gap-1.5">
-                      <Briefcase className="w-4 h-4" />
-                      <span>Full-time</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Clock className="w-4 h-4" />
-                      <span>2+ Years Experience</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <MapPin className="w-4 h-4" />
-                      <span>Remote / India</span>
-                    </div>
-                  </div>
-                  <p className="text-white/70 max-w-2xl leading-relaxed">
-                    We are looking for an experienced Odoo Developer to join our core team. You will be responsible for developing custom Odoo modules, integrating third-party applications, and optimizing existing architectures for our global clients.
+      <section className="pb-24 md:pb-32">
+        <Container>
+          <FadeUp className="flex items-center justify-between border-b border-[var(--line)] pb-5">
+            <Eyebrow>Open positions</Eyebrow>
+            <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-cream/45">01 role</span>
+          </FadeUp>
+
+          <FadeUp delay={0.1}>
+            <article className="card group relative mt-6 overflow-hidden rounded-[24px] p-7 transition-colors duration-500 hover:border-[var(--line-strong)] md:p-10">
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-ember/10 to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+              <div className="relative grid gap-8 lg:grid-cols-12">
+                <div className="lg:col-span-8">
+                  <h2 className="text-3xl font-medium tracking-tight text-cream md:text-5xl">Odoo Developer</h2>
+                  <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em] text-cream/55">
+                    <li className="inline-flex items-center gap-2">
+                      <Briefcase className="h-3.5 w-3.5" /> Full-time
+                    </li>
+                    <li className="inline-flex items-center gap-2">
+                      <Clock className="h-3.5 w-3.5" /> 2+ Years Experience
+                    </li>
+                    <li className="inline-flex items-center gap-2">
+                      <MapPin className="h-3.5 w-3.5" /> Remote / India
+                    </li>
+                  </ul>
+                  <p className="mt-6 max-w-2xl text-base leading-relaxed text-cream/65 md:text-lg">
+                    We are looking for an experienced Odoo Developer to join our core team. You will be responsible for
+                    developing custom Odoo modules, integrating third-party applications, and optimizing existing
+                    architectures for our global clients.
                   </p>
                 </div>
-
-                <div className="shrink-0 flex items-center justify-center">
-                  <a 
-                    href="mailto:hr@odoocrafts.com?subject=Application%20for%20Odoo%20Developer%20(2%2B%20Years)"
-                    className="group/btn flex items-center gap-2 px-8 py-4 bg-white text-black font-semibold rounded-full hover:scale-105 transition-transform"
-                  >
-                    <Mail className="w-4 h-4" />
+                <div className="flex items-start lg:col-span-4 lg:justify-end">
+                  <Button href={links.emailApply} icon={<Mail className="h-4 w-4" />}>
                     Apply Now
-                  </a>
+                  </Button>
                 </div>
               </div>
+            </article>
+          </FadeUp>
+
+          <FadeUp delay={0.15} className="mt-16 md:mt-24">
+            <div className="flex flex-col items-start justify-between gap-6 rounded-[24px] border border-dashed border-[var(--line-strong)] p-7 md:flex-row md:items-center md:p-10">
+              <div>
+                <h3 className="text-2xl font-medium tracking-tight text-cream md:text-3xl">Don&apos;t see a perfect fit?</h3>
+                <p className="mt-2 text-[15px] text-cream/60">
+                  We&apos;re always interested in meeting great people. Send your resume to us anyway.
+                </p>
+              </div>
+              <a href={links.emailHr} className="link-underline inline-flex items-center gap-2 text-lg font-medium text-ember">
+                hr@odoocrafts.com <ArrowUpRight className="h-4 w-4" />
+              </a>
             </div>
-          </div>
-          
-          <div className="mt-20 p-8 rounded-3xl bg-gradient-to-br from-white/5 to-transparent border border-white/10 text-center">
-            <h3 className="text-xl font-semibold text-white mb-2">Don't see a perfect fit?</h3>
-            <p className="text-white/60 mb-6">We're always interested in meeting great people. Send your resume to us anyway.</p>
-            <a href="mailto:hr@odoocrafts.com" className="text-orange-400 hover:text-orange-300 font-medium inline-flex items-center gap-2">
-              hr@odoocrafts.com
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
+          </FadeUp>
+        </Container>
       </section>
-      
+
       <CTA />
     </main>
   );

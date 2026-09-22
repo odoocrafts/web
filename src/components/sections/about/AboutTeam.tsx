@@ -1,9 +1,8 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { Container, Eyebrow, Heading } from "@/components/ui/Section";
+import { FadeUp, Item, Stagger } from "@/components/fx/Reveal";
 
 import anasImg from "../../../../public/team/anas.webp";
 import rizwanImg from "../../../../public/team/rizwan.webp";
@@ -19,57 +18,57 @@ const team = [
 
 export default function AboutTeam() {
   return (
-    <section className="py-32 px-6 border-t border-white/5 relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none" />
-
-      <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">Meet the Leadership</h2>
-            <p className="text-white/60 text-lg max-w-xl">The visionaries driving Odoocrafts forward, ensuring engineering excellence and client success.</p>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link href="/team" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white font-medium hover:bg-white/20 transition-colors border border-white/10">
-              View Full Team <ArrowRight className="w-4 h-4" />
+    <section id="team" className="relative overflow-hidden py-24 md:py-32">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet/20 blur-[150px]" />
+      <Container className="relative">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <FadeUp>
+              <Eyebrow index="06">Leadership</Eyebrow>
+            </FadeUp>
+            <Heading className="mt-6" title="The people" accent="behind the systems." size="lg" />
+            <FadeUp delay={0.2}>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-cream/65">
+                The visionaries driving Odoocrafts forward, ensuring engineering excellence and client success.
+              </p>
+            </FadeUp>
+          </div>
+          <FadeUp delay={0.25}>
+            <Link
+              href="/team"
+              className="inline-flex h-12 items-center gap-2 rounded-full border border-[var(--line-strong)] px-6 text-[15px] font-medium text-cream transition-colors hover:bg-cream hover:text-ink"
+            >
+              View Full Team <ArrowUpRight className="h-4 w-4" />
             </Link>
-          </motion.div>
+          </FadeUp>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-          {team.map((member, i) => (
-            <motion.div
-              key={member.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative rounded-3xl bg-white/5 border border-white/10 p-6 text-center hover:bg-white/10 transition-all"
-            >
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gradient-to-br from-blue-500/20 to-purple-600/20 p-1 transform group-hover:scale-105 transition-transform duration-300">
-                <div className="relative w-full h-full rounded-full overflow-hidden bg-black/50">
-                  <Image 
-                    src={member.image} 
-                    alt={member.name}
+        <Stagger className="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {team.map((m) => (
+            <Item key={m.name} className="group">
+              <div className="card relative overflow-hidden rounded-[24px]">
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image
+                    src={m.image}
+                    alt={m.name}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                    className="object-cover grayscale transition-all duration-700 ease-out-expo group-hover:scale-105 group-hover:grayscale-0"
                   />
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-ink to-transparent" />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5">
+                  <div>
+                    <h3 className="text-xl font-medium tracking-tight text-cream">{m.name}</h3>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-cream/55">{m.role}</p>
+                  </div>
+                  <span className="h-1.5 w-1.5 rounded-full bg-lilac opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
-              <p className="text-white/50 text-sm font-medium uppercase tracking-widest">{member.role}</p>
-            </motion.div>
+            </Item>
           ))}
-        </div>
-      </div>
+        </Stagger>
+      </Container>
     </section>
   );
 }

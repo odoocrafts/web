@@ -1,6 +1,6 @@
+import { Metadata } from "next";
 import CTA from "@/components/sections/CTA";
 import SolutionsShowcase from "@/components/sections/SolutionsShowcase";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Solutions",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Solutions() {
   return (
-    <main className="flex min-h-screen flex-col bg-transparent">
+    <main>
       <SolutionsShowcase />
       <CTA />
     </main>
