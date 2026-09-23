@@ -27,22 +27,6 @@ export default function Hero() {
       </div>
 
       <Container className="relative flex flex-1 flex-col justify-end pb-32 pt-32 md:pb-14 md:pt-40">
-        {/* Eyebrow */}
-        <motion.div
-          className="mb-8 flex flex-wrap items-center gap-x-4 gap-y-2 md:mb-12"
-          initial={{ opacity: 0, y: 12 }}
-          animate={ready ? { opacity: 1, y: 0 } : {}}
-          transition={d(0.1)}
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line-strong)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-cream/70">
-            <span className="h-1.5 w-1.5 rounded-full bg-mint animate-pulse-dot" />
-            Official Odoo Partner
-          </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-cream/45">
-            Kochi, India → Worldwide
-          </span>
-        </motion.div>
-
         {/* Headline */}
         <h1 className="max-w-[12ch] text-[clamp(2.9rem,9.4vw,9.5rem)] font-medium leading-[0.92] tracking-[-0.04em] text-cream">
           <Words text="Transform Business Chaos" animate={ready} delay={0.15} stagger={0.06} />
