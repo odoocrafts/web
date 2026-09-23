@@ -43,7 +43,7 @@ export default function FeaturedCaseStudy() {
                 className="relative z-10 max-h-28 w-auto max-w-[70%] object-contain drop-shadow-[0_20px_60px_rgba(0,0,0,0.6)] transition-transform duration-700 ease-out-expo group-hover:scale-105 md:max-h-40"
               />
               <div className="absolute bottom-6 left-6 flex flex-wrap gap-2">
-                {["Next.js", "Odoo ERP", "3 mobile apps", "Real-time tracking"].map((t) => (
+                {["Next.js", "Odoo ERP", "3 mobile apps", "India Post", "Pan-India shipping"].map((t) => (
                   <span key={t} className="rounded-full border border-[var(--line-strong)] bg-ink/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-cream/70">
                     {t}
                   </span>

@@ -12,10 +12,10 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: "kerala-xpress",
-    title: "How We Solved End-to-End Problems for an Emerging Logistics Provider in Kerala",
-    excerpt: "Discover how we developed a complete digital ecosystem for Kerala Xpress, including a Next.js website with real-time tracking, an Odoo ERP backend, and custom mobile apps.",
-    date: "July 2026",
-    readTime: "4 min read",
+    title: "How We Took a Kerala Logistics Provider to Pan-India Shipping",
+    excerpt: "Discover how we built a complete digital ecosystem for Kerala Xpress — a Next.js website with real-time tracking, an Odoo ERP backend, custom mobile apps, and an India Post integration that lets sellers across India ship anywhere in the country.",
+    date: "September 2026",
+    readTime: "5 min read",
     coverImage: "https://keralaxpress.com/logo.png",
     client: "Kerala Xpress",
     content: `
@@ -39,9 +39,18 @@ Logistics is a field business, so we developed a suite of specialized mobile app
 *   **Delivery Executives App:** A streamlined, rugged app for drivers featuring AI-optimized routing, real-time status updates, barcode scanning, and electronic proof-of-delivery (ePOD) capabilities.
 *   **Internal Team App:** Empowering the Kerala Xpress operations staff to oversee dispatching on-the-go, manage exceptions instantly, and monitor fleet performance.
 
+### 4. India Post Integration for Pan-India Reach
+Kerala Xpress's own fleet covers Kerala, but their sellers wanted to reach customers everywhere. We integrated India Post directly into the Odoo backend and the Sellers App, so a shipment bound for any pin code in the country is booked, labelled and tracked from the same interface as a local delivery.
+*   **Unified booking:** Sellers create one shipment; the system automatically routes it to the Kerala Xpress fleet or hands it off to India Post based on the destination.
+*   **Automated manifests & labels:** India Post consignment numbers, barcodes and shipping labels are generated inside Odoo — no double entry, no separate portal.
+*   **End-to-end tracking:** India Post tracking events flow back into the platform, so customers see a single tracking timeline on the Kerala Xpress website regardless of who carries the last mile.
+*   **Reconciled billing:** India Post postage is captured against each shipment and settled in the seller's ledger alongside local deliveries.
+
 ## The Result
 
-By transitioning to this unified Odoocrafts ecosystem, Kerala Xpress drastically reduced manual administrative overhead, significantly improved delivery timelines, and provided total transparency to their customers and sellers. They are now equipped with a highly scalable, future-proof foundation ready to dominate the logistics market in Kerala and beyond.
+By transitioning to this unified Odoocrafts ecosystem, Kerala Xpress drastically reduced manual administrative overhead, significantly improved delivery timelines, and provided total transparency to their customers and sellers.
+
+What began as a regional logistics platform is now used by sellers across India. With the India Post integration, a merchant onboarded on Kerala Xpress can ship to every serviceable pin code in the country — all from one system, one ledger and one tracking page. Kerala Xpress now operates on a highly scalable, future-proof foundation built for national reach.
 `
   }
 ];
