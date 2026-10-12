@@ -67,6 +67,16 @@ function renderMarkdown(content: string) {
           <h2 className="text-3xl font-medium tracking-tight text-cream md:text-5xl">{line.replace("## ", "")}</h2>
         </div>
       );
+    } else if (line.startsWith("> ")) {
+      flush(`ul-${i}`);
+      out.push(
+        <blockquote
+          key={i}
+          className="my-10 border-l-2 border-lilac/50 pl-6 text-[17px] leading-relaxed text-cream/80 md:text-lg"
+        >
+          {inline(line.slice(2), `q-${i}`)}
+        </blockquote>
+      );
     } else if (line.startsWith("* ") || line.startsWith("- ")) {
       list.push(
         <li key={i} className="flex gap-4 text-[17px] leading-relaxed text-cream/70">
