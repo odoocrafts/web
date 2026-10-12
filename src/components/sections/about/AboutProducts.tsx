@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { ArrowUpRight, Bot, GraduationCap, Cloud, TrendingUp, Zap, FileSpreadsheet } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Bot, GraduationCap, Cloud, TrendingUp, Zap, FileSpreadsheet, type LucideIcon } from "lucide-react";
 import { Container, Eyebrow, Heading } from "@/components/ui/Section";
 import { FadeUp, Item, Stagger } from "@/components/fx/Reveal";
 import CountUp from "@/components/fx/CountUp";
 
-const products = [
+const products: { title: string; desc: string; icon?: LucideIcon; image?: string; href: string; badge?: string }[] = [
+  { title: "Sellora", desc: "Order, pack & dispatch app for WhatsApp shops", image: "/sellora-icon.svg", href: "/solutions", badge: "New" },
   { title: "SmartHive", desc: "AI-powered CRM for Institutes", icon: Bot, href: "/solutions" },
   { title: "Vidyalink", desc: "Complete School ERP", icon: GraduationCap, href: "/solutions" },
   { title: "Managed Odoo Cloud", desc: "Hosted & Maintained by Odoocrafts", icon: Cloud, href: "/our-services" },
@@ -35,7 +37,7 @@ export default function AboutProducts() {
           </FadeUp>
         </div>
 
-        <Stagger className="mt-12 grid gap-4 md:grid-cols-3">
+        <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((p) => {
             const Icon = p.icon;
             return (
@@ -45,9 +47,20 @@ export default function AboutProducts() {
                   className="card group flex h-full flex-col justify-between rounded-[24px] p-7 transition-colors duration-500 hover:border-[var(--line-strong)]"
                 >
                   <div className="flex items-start justify-between">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--line-strong)] text-lilac">
-                      <Icon className="h-5 w-5" />
-                    </span>
+                    <div className="flex items-center gap-3">
+                      {p.image ? (
+                        <Image src={p.image} alt="" width={48} height={48} className="h-12 w-12 rounded-2xl" />
+                      ) : Icon ? (
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--line-strong)] text-lilac">
+                          <Icon className="h-5 w-5" />
+                        </span>
+                      ) : null}
+                      {p.badge && (
+                        <span className="rounded-full border border-sky-400/40 bg-sky-400/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-sky-300">
+                          {p.badge}
+                        </span>
+                      )}
+                    </div>
                     <ArrowUpRight className="h-5 w-5 text-cream/30 transition-all duration-500 ease-out-expo group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-cream" />
                   </div>
                   <div className="mt-12">

@@ -6,8 +6,16 @@ import { solutions } from "@/data/solutions";
 import { Container, Eyebrow, Heading } from "@/components/ui/Section";
 import { FadeUp } from "@/components/fx/Reveal";
 import Button from "@/components/ui/Button";
+import SolutionMark from "@/components/ui/SolutionMark";
 
-const spans = ["md:col-span-7 md:row-span-2", "md:col-span-5", "md:col-span-5", "md:col-span-6", "md:col-span-6"];
+const spans = [
+  "md:col-span-7 md:row-span-2",
+  "md:col-span-5",
+  "md:col-span-5",
+  "md:col-span-4",
+  "md:col-span-4",
+  "md:col-span-4",
+];
 
 export default function SolutionsBento() {
   return (
@@ -30,12 +38,11 @@ export default function SolutionsBento() {
 
         <ul className="mt-14 grid gap-4 md:mt-20 md:grid-cols-12 md:grid-rows-[minmax(220px,auto)_minmax(220px,auto)_minmax(220px,auto)]">
           {solutions.map((s, i) => {
-            const Icon = s.icon;
             const big = i === 0;
             return (
               <motion.li
                 key={s.title}
-                className={`${spans[i]} group relative`}
+                className={`${spans[i] ?? "md:col-span-4"} group relative`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-8% 0px" }}
@@ -54,9 +61,15 @@ export default function SolutionsBento() {
                     className={`pointer-events-none absolute inset-0 bg-linear-to-br ${s.wash} opacity-40 transition-opacity duration-700 group-hover:opacity-100`}
                   />
                   <div className="relative flex items-start justify-between">
-                    <span className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--line-strong)] bg-ink/50 ${s.accent}`}>
-                      <Icon className="h-5 w-5" />
-                    </span>
+                    <div className="flex items-center gap-3">
+                      <SolutionMark solution={s} size={big ? "md" : "sm"} />
+                      {s.badge && (
+                        <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/40 bg-sky-400/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-sky-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse-dot" />
+                          {s.badge}
+                        </span>
+                      )}
+                    </div>
                     <ArrowUpRight className="h-5 w-5 text-cream/30 transition-all duration-500 ease-out-expo group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-cream" />
                   </div>
 
@@ -67,16 +80,16 @@ export default function SolutionsBento() {
                     </h3>
                     <p className={`mt-3 text-cream/60 ${big ? "max-w-md text-base md:text-lg" : "text-[15px]"}`}>{s.subtitle}</p>
                     <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cream/70 transition-colors group-hover:text-cream">
-                      View Live Demo
+                      {s.cta ?? "View Live Demo"}
                       <span className="h-px w-8 bg-current transition-all duration-500 group-hover:w-12" />
                     </span>
                   </div>
 
                   {big && (
-                    <div className="pointer-events-none absolute -bottom-16 -right-10 hidden h-64 w-64 rounded-full border border-lilac/20 md:block">
-                      <div className="absolute inset-6 rounded-full border border-lilac/15" />
-                      <div className="absolute inset-12 rounded-full border border-lilac/10" />
-                      <div className="absolute inset-[4.5rem] rounded-full bg-violet-2/20 blur-2xl" />
+                    <div className="pointer-events-none absolute -bottom-16 -right-10 hidden h-64 w-64 rounded-full border border-sky-400/20 md:block">
+                      <div className="absolute inset-6 rounded-full border border-sky-400/15" />
+                      <div className="absolute inset-12 rounded-full border border-sky-400/10" />
+                      <div className="absolute inset-[4.5rem] rounded-full bg-sky-500/20 blur-2xl" />
                     </div>
                   )}
                 </a>

@@ -6,6 +6,7 @@ import { solutions } from "@/data/solutions";
 import { Container, PageHeader } from "@/components/ui/Section";
 import { FadeUp } from "@/components/fx/Reveal";
 import Button from "@/components/ui/Button";
+import SolutionMark from "@/components/ui/SolutionMark";
 
 export default function SolutionsShowcase() {
   return (
@@ -23,7 +24,6 @@ export default function SolutionsShowcase() {
         <Container>
           <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {solutions.map((s, i) => {
-              const Icon = s.icon;
               return (
                 <motion.li
                   key={s.title}
@@ -39,12 +39,16 @@ export default function SolutionsShowcase() {
                     {/* Visual */}
                     <div className="relative flex h-52 items-center justify-center border-b border-[var(--line)]">
                       <div className="absolute inset-0 grid-lines opacity-70" />
-                      <div className="relative">
+                      <div className="relative transition-transform duration-700 ease-out-expo group-hover:scale-110 group-hover:-rotate-3">
                         <div className="absolute -inset-8 rounded-full bg-cream/5 blur-2xl" />
-                        <span className={`relative inline-flex h-20 w-20 items-center justify-center rounded-3xl border border-[var(--line-strong)] bg-ink/60 ${s.accent} transition-transform duration-700 ease-out-expo group-hover:scale-110 group-hover:-rotate-3`}>
-                          <Icon className="h-9 w-9" />
-                        </span>
+                        <SolutionMark solution={s} size="lg" className="relative" />
                       </div>
+                      {s.badge && (
+                        <span className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-sky-400/40 bg-sky-400/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-sky-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse-dot" />
+                          {s.badge}
+                        </span>
+                      )}
                     </div>
 
                     <div className="relative flex flex-1 flex-col p-7">
@@ -57,7 +61,7 @@ export default function SolutionsShowcase() {
                         rel="noopener noreferrer"
                         className="mt-8 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-[var(--line-strong)] text-[15px] font-medium text-cream transition-colors duration-500 hover:bg-cream hover:text-ink"
                       >
-                        View Live Demo <ArrowUpRight className="h-4 w-4" />
+                        {s.cta ?? "View Live Demo"} <ArrowUpRight className="h-4 w-4" />
                       </a>
                     </div>
                   </div>

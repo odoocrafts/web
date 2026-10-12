@@ -1,17 +1,37 @@
-import { Bot, FlaskConical, Leaf, GraduationCap, Stethoscope, type LucideIcon } from "lucide-react";
+import { Bot, FlaskConical, Leaf, GraduationCap, ListChecks, Stethoscope, type LucideIcon } from "lucide-react";
 
 export interface Solution {
   title: string;
   subtitle: string;
   icon: LucideIcon;
+  /** Optional brand mark; rendered instead of the Lucide icon when present */
+  image?: string;
   /** tailwind gradient stops for the accent wash */
   wash: string;
   accent: string;
   link: string;
   sector: string;
+  /** Small label such as "New" */
+  badge?: string;
+  /** CTA label; defaults to "View Live Demo" */
+  cta?: string;
 }
 
+export const SELLORA_URL = "https://app.sellora.odoocrafts.com/app/";
+
 export const solutions: Solution[] = [
+  {
+    title: "Sellora",
+    subtitle: "Order, pack and dispatch — from the WhatsApp chat to the parcel. Built for small Indian shops.",
+    icon: ListChecks,
+    image: "/sellora-icon.svg",
+    wash: "from-sky-400/25 to-transparent",
+    accent: "text-sky-300",
+    link: SELLORA_URL,
+    sector: "Small shops · WhatsApp & Instagram sellers",
+    badge: "New",
+    cta: "Open Sellora",
+  },
   {
     title: "SmartHive AI CRM",
     subtitle: "Smarter Leads. Stronger Relationships. More Sales.",

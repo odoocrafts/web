@@ -14,7 +14,7 @@ export default function FeaturedCaseStudy() {
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <FadeUp>
-              <Eyebrow index="05">Proof of work</Eyebrow>
+              <Eyebrow index="06">Proof of work</Eyebrow>
             </FadeUp>
             <Heading className="mt-6 max-w-[14ch]" title="Real problems." accent="Real systems." />
           </div>

@@ -41,7 +41,7 @@ export default function Process() {
         <div className="mt-24 grid gap-12 md:mt-32 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <FadeUp>
-              <Eyebrow index="04">How a project runs</Eyebrow>
+              <Eyebrow index="05">How a project runs</Eyebrow>
             </FadeUp>
             <Heading className="mt-6" title="Crafted," accent="not configured." size="lg" />
           </div>

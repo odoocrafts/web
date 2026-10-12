@@ -1,6 +1,7 @@
 import Marquee from "@/components/fx/Marquee";
 
 const items = [
+  "New · Sellora — order, pack & dispatch for WhatsApp shops",
   "Odoo ERP Implementation",
   "CRM Automation",
   "Custom Development",

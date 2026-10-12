@@ -64,7 +64,7 @@ export default function SmartHiveShowcase() {
       <Container className="relative">
         <div className="mx-auto max-w-3xl text-center">
           <FadeUp>
-            <Eyebrow index="03" className="justify-center" tone="violet">
+            <Eyebrow index="04" className="justify-center" tone="violet">
               Flagship product
             </Eyebrow>
           </FadeUp>
